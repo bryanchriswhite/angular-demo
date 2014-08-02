@@ -2,16 +2,14 @@
 
 /**
  * @ngdoc function
- * @name truecoinDemoApp.controller:MainCtrl
+ * @name TruecoinDemoApp.controllers#controller:mainController
  * @description
- * # MainCtrl
- * Controller of the truecoinDemoApp
+ * # mainController
+ * Controller of the TruecoinDemoApp
  */
-angular.module('truecoinDemoApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('TruecoinDemoApp.controllers')
+  .controller('mainController',
+  function($scope, productService) {
+    $scope.products = productService.products;
+  }
+);

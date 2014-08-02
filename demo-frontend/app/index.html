@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="truecoinDemoApp">
+  <body ng-app="TruecoinDemoApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -30,7 +30,7 @@
         <h3 class="text-muted">Truecoin Demo | Angular Front-end</h3>
       </div>
 
-      <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+      <div ng-include="'views/main.html'" ng-controller="mainController"></div>
 
       <div class="footer">
         <!--<p><span class="glyphicon glyphicon-heart"></span> from the yeoman team</p>-->
@@ -80,7 +80,10 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/index.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/index.js"></script>
+        <script src="scripts/services/productService.js"></script>
         <!-- endbuild -->
 </body>
 </html>

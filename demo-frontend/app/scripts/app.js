@@ -8,8 +8,9 @@
  *
  * Main module of the application.
  */
-angular
-  .module('truecoinDemoApp', [
+angular.module('TruecoinDemoApp', [
+    'TruecoinDemoApp.controllers',
+    'TruecoinDemoApp.services',
     'ngCookies',
     'ngSanitize'
   ]);
