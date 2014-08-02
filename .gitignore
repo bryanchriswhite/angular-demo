@@ -1,2 +1,4 @@
 .idea/*
+*/.idea/*
+demo-frontend/node_modules
 */__pycache__/*
