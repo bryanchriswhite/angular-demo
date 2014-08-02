@@ -10,6 +10,7 @@
 angular.module('TruecoinDemoApp.controllers')
   .controller('mainController',
   function($scope, productService) {
+    
     productService.getList()
       .success(function(data) {
         $scope.products = data.products;

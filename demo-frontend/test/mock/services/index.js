@@ -1,0 +1,1 @@
+angular.module('Mocks.services', ['restangular']);
