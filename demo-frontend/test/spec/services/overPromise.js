@@ -16,6 +16,75 @@ describe('overPromise', function() {
       , promise = overPromise(deferred.promise)
       ;
 
+    // TODO: refactor to be programatic... yikes!
+    //-- base
     promise.success.should.be.a.Function;
+    promise.error.should.be.a.Function;
+
+    //-- first recursion
+    promise
+      .success(angular.noop)
+      .success
+      .should.be.a.Function;
+    
+    promise
+      .success(angular.noop)
+      .error
+      .should.be.a.Function;
+    
+    promise
+      .error(angular.noop)
+      .success
+      .should.be.a.Function;
+
+    promise
+      .error(angular.noop)
+      .error
+      .should.be.a.Function;
+
+    //-- second recursion
+    promise
+      .success(angular.noop)
+      .success(angular.noop)
+      .success
+      .should.be.a.Function;
+
+    promise
+      .success(angular.noop)
+      .success(angular.noop)
+      .error
+      .should.be.a.Function;
+    
+    promise
+      .success(angular.noop)
+      .error(angular.noop)
+      .success
+      .should.be.a.Function;
+    
+    promise
+      .success(angular.noop)
+      .error(angular.noop)
+      .error
+      .should.be.a.Function;
+
+    promise.error(angular.noop)
+      .success(angular.noop)
+      .success
+      .should.be.a.Function;
+
+    promise.error(angular.noop)
+      .success(angular.noop)
+      .error
+      .should.be.a.Function;
+
+    promise.error(angular.noop)
+      .error(angular.noop)
+      .success
+      .should.be.a.Function;
+
+    promise.error(angular.noop)
+      .error(angular.noop)
+      .error
+      .should.be.a.Function;
   });
 });
