@@ -1,6 +1,14 @@
 describe('ProductService', function() {
   beforeEach(function() {
-    module('TruecoinDemoAppTest.services')
+    module('TruecoinDemoAppTest.services');
+    module(function($provide) {
+      $provide.value('overPromise', function() {
+        return {
+          success: function() {},
+          error: function() {},
+        }
+      })
+    })
   });
 
   var productService
@@ -20,6 +28,7 @@ describe('ProductService', function() {
     it('should return a promise with a #success() and #error()', function() {
       var promise = productService.getList();
       promise.success.should.be.a.Function;
+      promise.error.should.be.a.Function;
     });
   });
 });
