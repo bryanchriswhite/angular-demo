@@ -43,6 +43,6 @@ describe('Controller: MainCtrl', function() {
   }));
 
   it('should attach products to the scope', function() {
-    expect(scope.products).toBe(products);
+    scope.products.should.eql(productService.products);
   });
 });
