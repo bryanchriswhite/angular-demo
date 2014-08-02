@@ -11,11 +11,10 @@
  |   This is just an example of how one might go about setting
  |   up a unit test with angular and mocks.
  */
-beforeEach(function() {
-  module('TruecoinDemoAppTest.controllers');
-});
-
 describe('Controller: mainController', function() {
+  beforeEach(function() {
+    module('TruecoinDemoAppTest.controllers');
+  });
 
   var mainController
     , scope
@@ -27,7 +26,7 @@ describe('Controller: mainController', function() {
     productService = _productService_;
     scope = $rootScope.$new();
     mainController = $controller('mainController', {
-      $scope        : scope,
+      $scope: scope,
 //      productService: _productService_
     });
   }));
@@ -36,3 +35,28 @@ describe('Controller: mainController', function() {
     scope.products.should.eql(productService.private.products);
   });
 });
+
+
+describe('ProductService', function() {
+  beforeEach(function() {
+    module('TruecoinDemoAppTest.services')
+  });
+
+  var productService
+    ;
+
+  beforeEach(inject(function(_productService_) {
+    productService = _productService_;
+  }));
+
+  it('should expose #getList()', function() {
+    productService.getList.should.be.a.Function
+  });
+
+  describe('#getList()', function() {
+    it('should return a promise with a #success() and #error()', function() {
+      var promise = productService.getList();
+      promise.success.should.be.a.Function;
+    });
+  });
+})
