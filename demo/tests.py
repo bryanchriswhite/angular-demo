@@ -4,7 +4,7 @@ from demo.models import Product
 
 class SanityCheckTestCase(TestCase):
     def setUp(self):
-        Product.objects.create(
+        self.product = Product.objects.create(
             name='First Product',
             description='This is the description for the first product.',
             inventory_count=15
@@ -12,5 +12,5 @@ class SanityCheckTestCase(TestCase):
 
     def test_djangoWorks(self):
         product = Product.objects.all()[0]
-        self.assertEqual(product.name, 'First Product')
+        self.assertEqual(product, self.product)
 
