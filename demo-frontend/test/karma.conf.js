@@ -28,9 +28,7 @@ module.exports = function(config) {
     ],
 
     // list of files / patterns to exclude
-    exclude: [
-//      'app/scripts/**/index.js'
-    ],
+    exclude: [],
 
     // web server port
     port: 8080,
