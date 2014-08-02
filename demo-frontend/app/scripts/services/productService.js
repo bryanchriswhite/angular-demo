@@ -1,6 +1,6 @@
 angular.module('TruecoinDemoApp.services')
   .service('productService',
-  function() {
+  function(Restangular) {
     this.products = [
       {
         name           : 'Product 1',
