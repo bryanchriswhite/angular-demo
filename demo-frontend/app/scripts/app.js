@@ -14,4 +14,5 @@ angular.module('TruecoinDemoApp', [
     'ngCookies',
     'ngSanitize',
     'restangular',
-  ]);
+  ])
+;

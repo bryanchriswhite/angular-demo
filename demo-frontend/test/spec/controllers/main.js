@@ -14,6 +14,45 @@
 describe('Controller: mainController', function() {
   beforeEach(function() {
     module('TruecoinDemoAppTest.controllers');
+    module(function($provide) {
+      $provide.service('productService', function() {
+        var _private = {
+          products: [
+            {
+              name           : 'Product 1',
+              description    : 'This is a description of product 1',
+              inventory_count: '15',
+            },
+            {
+              name           : 'Product 2',
+              description    : 'This is a description of product 2',
+              inventory_count: '10',
+            },
+            {
+              name           : 'Product 3',
+              description    : 'This is a description of product 3',
+              inventory_count: '7',
+            },
+          ]
+        };
+
+        this.getList = function() {
+          return {
+            success: function(callback) {
+              callback(_private);
+
+              return {
+                error: function() {
+
+                }
+              }
+            }
+          }
+        };
+
+        this.private = _private
+      });
+    })
   });
 
   var mainController
@@ -27,7 +66,6 @@ describe('Controller: mainController', function() {
     scope = $rootScope.$new();
     mainController = $controller('mainController', {
       $scope: scope,
-//      productService: _productService_
     });
   }));
 
@@ -43,10 +81,12 @@ describe('ProductService', function() {
   });
 
   var productService
+    , overPromise
     ;
 
-  beforeEach(inject(function(_productService_) {
+  beforeEach(inject(function(_productService_, _overPromise_) {
     productService = _productService_;
+    overPromise = _overPromise_;
   }));
 
   it('should expose #getList()', function() {

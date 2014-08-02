@@ -7,5 +7,4 @@ angular.module('TruecoinDemoAppTest.services', [
 angular.module('TruecoinDemoAppTest.controllers', [
   'ngMock',
   'TruecoinDemoApp.controllers',
-  'Mocks.services'
 ]);
