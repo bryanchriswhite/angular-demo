@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from demo.models import Product
+from demo.serializers import ProductSerializer
 from rest_framework import viewsets, routers
 
 from django.contrib import admin
@@ -7,6 +8,7 @@ admin.autodiscover()
 
 class ProductViewSet(viewsets.ModelViewSet):
     model = Product
+    serializer_class = ProductSerializer
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)

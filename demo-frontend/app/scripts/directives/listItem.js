@@ -75,7 +75,7 @@ angular.module('TruecoinDemoApp.directives')
         };
         
         scope.submit = function() {
-          scope.product.save()
+          scope.product.post()
         };
       }
     }

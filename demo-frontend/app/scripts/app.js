@@ -9,11 +9,16 @@
  * Main module of the application.
  */
 angular.module('TruecoinDemoApp', [
-    'TruecoinDemoApp.controllers',
-    'TruecoinDemoApp.services',
-    'TruecoinDemoApp.directives',
-    'ngCookies',
-    'ngSanitize',
-    'restangular',
-  ])
+  'TruecoinDemoApp.controllers',
+  'TruecoinDemoApp.services',
+  'TruecoinDemoApp.directives',
+  'ngCookies',
+  'ngSanitize',
+  'restangular',
+])
+  .config(function(RestangularProvider) {
+    RestangularProvider.setRestangularFields({
+      selfLink: 'url'
+    });
+  })
 ;
