@@ -13,7 +13,7 @@ angular.module('TruecoinDemoApp.controllers')
     
     productService.getList()
       .success(function(data) {
-        $scope.products = data.products;
+        $scope.products = data;
       })
       .error(function(reason) {
         console.error('Couldn\'t get products!: ', reason)
