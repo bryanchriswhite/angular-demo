@@ -33,7 +33,7 @@ angular.module('TruecoinDemoApp.directives')
             _element[0].style[property] = value;
           }
           , copyProductData = function() {
-            scope.productUpdate = {
+            scope.productCopy = {
               name           : scope.product.name,
               description    : scope.product.description,
               inventory_count: scope.product.inventory_count
