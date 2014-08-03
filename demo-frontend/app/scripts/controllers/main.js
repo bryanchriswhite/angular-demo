@@ -10,7 +10,6 @@
 angular.module('TruecoinDemoApp.controllers')
   .controller('mainController',
   function($scope, productService) {
-    
     productService.getList()
       .success(function(data) {
         $scope.products = data;
@@ -18,5 +17,10 @@ angular.module('TruecoinDemoApp.controllers')
       .error(function(reason) {
         console.error('Couldn\'t get products!: ', reason)
       })
+
+    $scope.test = function() {
+      console.log('handler called');
+   
+    }
   }
 );

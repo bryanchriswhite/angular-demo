@@ -11,6 +11,7 @@
 angular.module('TruecoinDemoApp', [
     'TruecoinDemoApp.controllers',
     'TruecoinDemoApp.services',
+    'TruecoinDemoApp.directives',
     'ngCookies',
     'ngSanitize',
     'restangular',
