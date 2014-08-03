@@ -16,11 +16,6 @@ angular.module('TruecoinDemoApp.controllers')
       })
       .error(function(reason) {
         console.error('Couldn\'t get products!: ', reason)
-      })
-
-    $scope.test = function() {
-      console.log('handler called');
-   
-    }
+      });
   }
 );
