@@ -64,6 +64,8 @@ angular.module('TruecoinDemoApp.directives')
           scope.formOpen = true;
           hide(buttons);
           show(form);
+
+          copyProductData();
         };
 
         scope.closeForm = function() {
@@ -75,8 +77,6 @@ angular.module('TruecoinDemoApp.directives')
         scope.submit = function() {
           scope.product.save()
         };
-
-        copyProductData();
       }
     }
   });
