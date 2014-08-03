@@ -1,5 +1,5 @@
 angular.module('TruecoinDemoApp.directives')
-  .directive('tcListItem', function($compile) {
+  .directive('tcListItem', function($compile, productService) {
     return {
       scope: true,
       link : function(scope, element, attrs) {
@@ -32,13 +32,6 @@ angular.module('TruecoinDemoApp.directives')
           , setStyle = function(_element, property, value) {
             _element[0].style[property] = value;
           }
-          , copyProductData = function() {
-            scope.productCopy = {
-              name           : scope.product.name,
-              description    : scope.product.description,
-              inventory_count: scope.product.inventory_count
-            }
-          }
           ;
 
         element.on('mouseenter', function() {
@@ -46,13 +39,14 @@ angular.module('TruecoinDemoApp.directives')
           if (scope.formOpen) return;
 
           show(buttons);
-          var top = element.position().top + (element.height() / 2) + 'px'; //event.clientY + 'px';
+          //-- render buttons vertically in the middle of the `<tr>` 
+          //  and horizontally 10px to the right of the cursor
+          var top = element.position().top + (element.height() / 2) + 'px';
           var left = event.clientX + 10 + 'px';
           setStyle(buttons, 'top', top);
           setStyle(buttons, 'left', left);
           setStyle(form, 'top', top);
           setStyle(form, 'left', left);
-//          buttons[0].style.transition = 'top 100ms ease, left 100ms ease';
         });
 
 
@@ -65,7 +59,10 @@ angular.module('TruecoinDemoApp.directives')
           hide(buttons);
           show(form);
 
-          copyProductData();
+          //-- Use a copy of the product to avoid updating the `<tr>`'s model.
+          //  Also, this means that when form is opened again any unsaved changes
+          //  will be destroyed, :thumbsup:
+          scope.productCopy = productService.copy(scope.product);
         };
 
         scope.closeForm = function() {
@@ -73,9 +70,20 @@ angular.module('TruecoinDemoApp.directives')
           show(buttons);
           hide(form);
         };
-        
+
         scope.submit = function() {
-          scope.product.post()
+          scope.productCopy.save()
+            .success(function() {
+              //-- on successful save, replace the product with the copy
+              scope.product = scope.productCopy;
+              scope.closeForm();
+              hide(buttons);
+            })
+            .error(function() {
+              //-- on error, don't modify the `scope.product`
+              // TODO: add error view messaging
+              console.error('Couldn\'t update product: ', reason);
+            })
         };
       }
     }
