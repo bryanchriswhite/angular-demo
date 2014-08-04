@@ -6,7 +6,7 @@ angular.module('TruecoinDemoApp.directives')
       },
       link : function(scope, element, attrs) {
         var actions = angular.element($templateCache.get('product-form') + $templateCache.get('list-item'));
-        
+
         element.append(actions);
         $compile(actions)(scope);
 
@@ -73,11 +73,17 @@ angular.module('TruecoinDemoApp.directives')
             .error(function() {
               //-- on error, don't modify the `scope.product`
               // TODO: add error view messaging
+              // TODO: look into implementing Restangular collection method to do this for you
               console.error('Couldn\'t update product: ', reason);
             })
         };
-        
-        scope.remove = productService.remove
+
+        scope.remove = function(product) {
+          productService.remove(product)
+            .success(function() {
+              scope.$emit('updateProducts', product)
+            })
+        }
       }
     }
   });
