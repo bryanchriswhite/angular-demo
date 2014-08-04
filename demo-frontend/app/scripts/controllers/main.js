@@ -27,7 +27,11 @@ angular.module('TruecoinDemoApp.controllers')
     };
     
     $scope.saveProduct = function() {
-      $scope.newProduct.save();
+      return productService.create($scope.newProduct)
+        .success(function(products) {
+          $scope.products = products;
+        })
+      ;
     };
   }
 )

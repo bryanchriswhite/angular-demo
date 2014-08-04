@@ -4,7 +4,7 @@ angular.module('TruecoinDemoApp.directives')
       restrict: 'A',
       scope   : {
         formOpen      : '=',
-        model         : '=formModel',
+        product       : '=formModel',
         position      : '=formPosition',
         submitDelegate: '=formSubmit',
       },

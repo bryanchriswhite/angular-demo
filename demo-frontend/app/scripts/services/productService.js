@@ -42,13 +42,15 @@ angular.module('TruecoinDemoApp.services')
         description    : '',
         inventory_count: '',
         url            : backendUrl + '/products/',
-        save           : function() {
-          delete this.save;
-//          return overPromise(_products.add(this));
-          _products.add(this);
-          return overPromise(_products[_products.length - 1].post())
-        }
       }
+    };
+
+    this.create = function(productData) {
+      _products.add(productData);
+      return overPromise(_products[_products.length - 1].post())
+        .success(function() {
+          return _products;
+        })
     };
 
     this.copy = function(element) {

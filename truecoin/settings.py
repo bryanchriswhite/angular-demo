@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     'demo',
 )
 
+# APPEND_SLASH = False
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',

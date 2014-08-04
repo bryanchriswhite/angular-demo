@@ -27,9 +27,9 @@ angular.module('TruecoinDemoApp', [
     // TODO: use ngTransclude and transclude the directives so you can just use `templateUrl` in the directive
     $templateCache.put('product-form', '<div class="product-form fade out"><div class="input-group">\
         <span class="input-group-addon" ng-click="closeForm()"><span class="glyphicon glyphicon-remove"></span></span>\
-        <input class="form-control" type="text" placeholder="Product Name" ng-model="productCopy.name"/>\
-        <input class="form-control" type="text" placeholder="Product Description" ng-model="productCopy.description"/>\
-        <input class="form-control" type="text" placeholder="# In Stock" ng-model="productCopy.inventory_count" pattern="\\d+"/>\
+        <input class="form-control" type="text" placeholder="Product Name" ng-model="product.name"/>\
+        <input class="form-control" type="text" placeholder="Product Description" ng-model="product.description"/>\
+        <input class="form-control" type="text" placeholder="# In Stock" ng-model="product.inventory_count" pattern="\\d+"/>\
         <span class="input-group-addon" ng-click="submit()"><span class="glyphicon glyphicon-ok"></span></span>\
         </div>\
         </div>');
