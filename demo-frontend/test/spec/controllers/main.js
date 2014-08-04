@@ -39,12 +39,10 @@ describe('Controller: mainController', function() {
         this.getList = function() {
           return {
             success: function(callback) {
-              callback(_private);
+              callback(_private.products);
 
               return {
-                error: function() {
-
-                }
+                error: angular.noop
               }
             }
           }
