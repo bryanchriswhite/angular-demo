@@ -88,4 +88,5 @@ Add angular ui's `ui.router` to re-enable the "About" and "Contact" pages using 
 
 ####Configure Build Process
 Finish build process configuration and test in new VM.
-**WIP**
+
+####WIP
