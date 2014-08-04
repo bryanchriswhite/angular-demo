@@ -64,7 +64,7 @@ grunt #default task
 ```
 * Run karma tests:
 ```bash
-grunt test
+grunt test #run all mocha tests via karma & phantomJS
 ```
 * Run development server (watches for changes and reloads browser window using livereload):
 ```bash
@@ -72,3 +72,6 @@ grunt serve #start server, watch and open in browser
 ```
 * Build a distribution (i.e. concatenate, minify, etc.), outputs to `demo-frontend/dist`
 **NOTE: the build process and production environment aren't complete yet! It is preferable at this time to run the app in the development environment!**
+```bash
+grunt build #contac, min, copy, etc.
+```
