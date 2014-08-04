@@ -79,3 +79,10 @@ grunt serve #start server, watch and open in browser
 ```bash
 grunt build #contac, min, copy, etc.
 ```
+
+Notable TODOs:
+--------------
+
+####Angular ui.router
+Add angular ui's `ui.router` to re-enable the "About" and "Contact" pages using client-side routes and views.
+**WIP**
