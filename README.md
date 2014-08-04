@@ -59,6 +59,7 @@ npm i --dev #install all node dependencies, also installs bower and all bower de
 ####Running task (e.g. starting the development server)
 This project uses [grunt](http://gruntjs.com/using-the-cli) for task-running and building. The more significant of these tasks are:
 * Default task, runs `jshint`, `test`, and `build`:
+**NOTE: jshint hasn't been configured yet so this task will probably fail**
 ```bash
 grunt #default task
 ```
