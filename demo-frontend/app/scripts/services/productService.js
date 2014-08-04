@@ -36,6 +36,13 @@ angular.module('TruecoinDemoApp.services')
       }))
     };
 
+    this.remove = function(product) {
+      return overPromise(product.remove())
+        .error(function(reason) {
+          console.error('Couldn\'t delete product: ', reason)
+        });
+    };
+
     this.newProduct = function() {
       return {
         name           : '',

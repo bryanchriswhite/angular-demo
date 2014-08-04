@@ -36,7 +36,7 @@ angular.module('TruecoinDemoApp', [
 
     $templateCache.put('list-item', '<div class="list-item-buttons fade out btn-group">\
           <button ng-click="openForm()" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>\
-          <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>\
+          <button ng-click="remove(originalProduct)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>\
         </div>')
   })
 ;

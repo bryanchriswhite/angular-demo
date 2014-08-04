@@ -76,6 +76,8 @@ angular.module('TruecoinDemoApp.directives')
               console.error('Couldn\'t update product: ', reason);
             })
         };
+        
+        scope.remove = productService.remove
       }
     }
   });
