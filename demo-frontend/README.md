@@ -1,3 +1,0 @@
-#Truecoin Demo App
-
-###WIP
