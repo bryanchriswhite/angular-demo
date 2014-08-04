@@ -10,6 +10,8 @@
 angular.module('TruecoinDemoApp.controllers')
   .controller('mainController',
   function($scope, productService) {
+    $scope.primitives = {};
+    
     productService.getList()
       .success(function(data) {
         $scope.products = data;
@@ -17,5 +19,12 @@ angular.module('TruecoinDemoApp.controllers')
       .error(function(reason) {
         console.error('Couldn\'t get products!: ', reason)
       });
+
+    $scope.addProduct = function($event) {
+      $scope.addFormPosition = angular.element('#add-btn').position();
+      $scope.newProduct = productService.new();
+      $scope.primitives.addFormOpen = true;
+    }
   }
-);
+)
+;

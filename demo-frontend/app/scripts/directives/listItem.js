@@ -1,26 +1,15 @@
 angular.module('TruecoinDemoApp.directives')
-  .directive('tcListItem', function($compile, productService) {
+  .directive('tcListItem', function($compile, $templateCache, productService) {
     return {
       scope: true,
       link : function(scope, element, attrs) {
-        var actions = angular.element('<div class="list-item-form fade out"><div class="input-group">\
-        <span class="input-group-addon" ng-click="closeForm()"><span class="glyphicon glyphicon-remove"></span></span>\
-        <input class="form-control" type="text" ng-model="productCopy.name"/>\
-        <input class="form-control" type="text" ng-model="productCopy.description"/>\
-        <input class="form-control" type="text" ng-model="productCopy.inventory_count" pattern="\\d+"/>\
-        <span class="input-group-addon" ng-click="submit()"><span class="glyphicon glyphicon-ok"></span></span>\
-        </div>\
-        </div>\
-        <div class="list-item-buttons fade out btn-group">\
-          <button ng-click="openForm()" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>\
-          <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>\
-        </div>');
+        var actions = angular.element($templateCache.get('product-form') + $templateCache.get('list-item'));
 
         element.append(actions);
         $compile(actions)(scope);
 
         var buttons = element.find('.list-item-buttons')
-          , form = element.find('.list-item-form')
+          , form = element.find('.product-form')
           , hide = function(_element) {
             _element.toggleClass('out', true);
             _element.toggleClass('in', false);

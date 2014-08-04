@@ -24,6 +24,18 @@ angular.module('TruecoinDemoApp.services')
         return collection;
       }))
     };
+    
+    this.new = function() {
+      return {
+        name: '',
+        description: '',
+        inventory_count: '',
+        save: function() {
+          delete this.save;
+          return overPromise(productsResource.post(this));
+        }
+      }
+    };
 
     this.copy = function(element) {
       var elementCopy = Restangular.copy(element);
