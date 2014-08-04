@@ -56,7 +56,7 @@ cd demo-frontend
 npm i --dev #install all node dependencies, also installs bower and all bower dependencies
 ```
 
-####Running task (e.g. starting the development server)
+####Running Tasks (e.g. starting the development server)
 This project uses [grunt](http://gruntjs.com/using-the-cli) for task-running and building. The more significant of these tasks are listed below.
 
 To finish getting the application running in the development environment, run the `serve` task:
