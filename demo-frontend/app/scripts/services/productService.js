@@ -4,7 +4,17 @@ angular.module('TruecoinDemoApp.services')
     //-- django requires a trailing `/`
     Restangular.setRequestSuffix('/');
 
-    var productsResource = Restangular.allUrl('products', backendUrl + '/products')
+    Restangular.extendCollection('products', function(collection) {
+      collection.add = function(productData) {
+        var product = Restangular.restangularizeElement(this.parentResource, productData, 'products');
+        this.push(product);
+      };
+
+      return collection;
+    });
+
+    var _products
+      , productsResource = Restangular.allUrl('products', backendUrl + '/products')
       , overPromiseElement = function(element) {
         var aliasedSave = element.save;
         element.save = function() {
@@ -16,23 +26,27 @@ angular.module('TruecoinDemoApp.services')
     //-- Provide `.success()` and `.error()` on Restangular collection elements.
     //  Delegate to Restangular collecton's `getList()`
     this.getList = function() {
-      return overPromise(productsResource.getList().then(function(collection) {
-        angular.forEach(collection, function(element) {
-          overPromiseElement(element);
+      return overPromise(productsResource.getList().then(function(products) {
+        angular.forEach(products, function(product) {
+          overPromiseElement(product);
         });
 
-        return collection;
+        _products = products;
+        return _products;
       }))
     };
-    
-    this.new = function() {
+
+    this.newProduct = function() {
       return {
-        name: '',
-        description: '',
+        name           : '',
+        description    : '',
         inventory_count: '',
-        save: function() {
+        url            : backendUrl + '/products/',
+        save           : function() {
           delete this.save;
-          return overPromise(productsResource.post(this));
+//          return overPromise(_products.add(this));
+          _products.add(this);
+          return overPromise(_products[_products.length - 1].post())
         }
       }
     };

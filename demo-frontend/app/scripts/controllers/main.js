@@ -20,11 +20,15 @@ angular.module('TruecoinDemoApp.controllers')
         console.error('Couldn\'t get products!: ', reason)
       });
 
-    $scope.addProduct = function($event) {
+    $scope.addProduct = function() {
       $scope.addFormPosition = angular.element('#add-btn').position();
-      $scope.newProduct = productService.new();
+      $scope.newProduct = productService.newProduct();
       $scope.primitives.addFormOpen = true;
-    }
+    };
+    
+    $scope.saveProduct = function() {
+      $scope.newProduct.save();
+    };
   }
 )
 ;
