@@ -1,10 +1,12 @@
 angular.module('TruecoinDemoApp.directives')
   .directive('tcListItem', function($compile, $templateCache, productService) {
     return {
-      scope: true,
+      scope: {
+        originalProduct: '=product'
+      },
       link : function(scope, element, attrs) {
         var actions = angular.element($templateCache.get('product-form') + $templateCache.get('list-item'));
-
+        
         element.append(actions);
         $compile(actions)(scope);
 
@@ -51,7 +53,7 @@ angular.module('TruecoinDemoApp.directives')
           //-- Use a copy of the product to avoid updating the `<tr>`'s model.
           //  Also, this means that when form is opened again any unsaved changes
           //  will be destroyed, :thumbsup:
-          scope.productCopy = productService.copy(scope.product);
+          scope.product = productService.copy(scope.originalProduct);
         };
 
         scope.closeForm = function() {
@@ -61,10 +63,10 @@ angular.module('TruecoinDemoApp.directives')
         };
 
         scope.submit = function() {
-          scope.productCopy.save()
+          scope.product.save()
             .success(function() {
               //-- on successful save, replace the product with the copy
-              scope.product = scope.productCopy;
+              scope.originalProduct = scope.product;
               scope.closeForm();
               hide(buttons);
             })
