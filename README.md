@@ -83,10 +83,14 @@ grunt build #contac, min, copy, etc.
 Notable TODOs:
 --------------
 
-####Angular ui.router
+####~~Angular ui.router~~ **DONE**
 Add angular ui's `ui.router` to re-enable the "About" and "Contact" pages using client-side routes and views.
 
 ####Configure Build Process
 Finish build process configuration and test in new VM.
 
-####WIP
+####Pagination
+Add pagination of products so the product table doesn't ever cause vertical scrolling.
+
+####This List
+Add stuff to this TODO list!
