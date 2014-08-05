@@ -15,13 +15,35 @@ angular.module('TruecoinDemoApp', [
   'ngCookies',
   'ngSanitize',
   'restangular',
+  'ui.router',
 ])
-  .config(function(RestangularProvider) {
+  .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
     RestangularProvider.setRestangularFields({
       selfLink: 'url'
     });
+    
+    $urlRouterProvider.otherwise('');
+    $stateProvider
+      .state({
+        name: 'home',
+        url: '/',
+        templateUrl: '/views/home.html'
+      })
+      .state({
+        name: 'about',
+        url: '/about',
+        templateUrl: '/views/about.html'
+      })
+      .state({
+        name: 'contact',
+        url: '/contact',
+        templateUrl: '/views/contact.html'
+      })
   })
-  .run(function($templateCache) {
+  .run(function($templateCache, $rootScope, $state) {
+    //-- Putting $state on $rootScope so that all child scopes have $state automatically
+    $rootScope.state = $state;
+    
     //-- Putting some templates in the template cache because it's simpler than doing transclude, etc. properly
     // TODO: configure grunt to do this and use an .html file instead
     // TODO: use ngTransclude and transclude the directives so you can just use `templateUrl` in the directive
