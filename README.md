@@ -86,6 +86,10 @@ Notable TODOs:
 ####~~Angular ui.router~~ **DONE**
 Add angular ui's `ui.router` to re-enable the "About" and "Contact" pages using client-side routes and views.
 
+####Get API Tests Working
+* Why is `/products/` doing a redirect?
+* How can I follow the redirect in the test to assert against the data?
+
 ####Configure Build Process
 Finish build process configuration and test in new VM.
 
