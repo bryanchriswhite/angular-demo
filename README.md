@@ -1,4 +1,4 @@
-Truecoin Demo App
+Trucoin Demo App
 =================
 
 Setup Development Environment
