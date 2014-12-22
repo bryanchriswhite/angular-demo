@@ -1,4 +1,4 @@
-Trucoin Demo App
+Angular Demo App
 =================
 
 Setup Development Environment
@@ -22,9 +22,9 @@ pip3 install virtualenv #pip3 is used here because most systems ship with python
 
 Assuming you have `virtualenv` in your `$PATH` and `ENV` is where your virtualenv's live:
 ```bash
-virtualenv truecoin && source ENV/$_/bin/activate
+virtualenv angular-demo && source ENV/$_/bin/activate
 ```
-_feel free to replace "truecoin" with whatever you want_
+_feel free to replace "angular-demo" with whatever you want_
 _for additional information on [virtualenv](http://virtualenv.readthedocs.org/en/latest/) please visit [their documentation](http://virtualenv.readthedocs.org/en/latest/)_
 
 ####Install Dependencies
@@ -34,9 +34,9 @@ pip -r requirements.txt #virtualenv provides pip (not pip3) because there's only
 ```
 
 ####Database Setup
-This guide assumes that your `pg_hba.conf` is using `trust` (default for OSX) or `ident` (default for linux) for connections to `localhost`. If this is not the case, you must provide your username and password in `/truecoin/settings.py` In the `DATABASES` map.
+This guide assumes that your `pg_hba.conf` is using `trust` (default for OSX) or `ident` (default for linux) for connections to `localhost`. If this is not the case, you must provide your username and password in `/angular-demo/settings.py` In the `DATABASES` map.
 ```bash
-createdb truecoin #creates database with same name as in truecoin/settings.py
+createdb angular-demo #creates database with same name as in angular-demo/settings.py
 ./manage.py syncdb #tell django to create necessary tables
 ```
 _If you're `pg_hba.conf` is using `ident` and you're having permission issues, make sure that you're running `manage.py` as the user listed in the `pg_hba.conf` line for `localhost` using `ident`_
